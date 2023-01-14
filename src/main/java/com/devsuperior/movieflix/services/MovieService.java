@@ -1,9 +1,12 @@
 package com.devsuperior.movieflix.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.devsuperior.movieflix.dtos.movie.MovieOutputAllDTO;
 import com.devsuperior.movieflix.dtos.movie.MovieOutputDTO;
 import com.devsuperior.movieflix.entities.Movie;
 import com.devsuperior.movieflix.exceptions.ResourceNotFoundException;
@@ -24,5 +27,10 @@ public class MovieService {
 		Movie entity = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Movie", id.toString()));
 		return mapper.convertMovieEntityToMovieOutputDTO(entity);
+	}
+	
+	@Transactional(readOnly = true)
+	public Page<MovieOutputAllDTO> findByGenre(Long idGenre, Pageable pageable) {
+		return repository.findByGenre(idGenre, pageable);
 	}
 }
