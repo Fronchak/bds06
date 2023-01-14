@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "movie")
+@Table(name = "tb_movie")
 public class Movie implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -27,13 +27,13 @@ public class Movie implements Serializable {
 	private String title;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_genre")
+	@JoinColumn(name = "genre_id")
 	private Genre genre;
 	
 	@Column(name = "sub_title")
 	private String subTitle;
 	
-	@Column(name = "lauch_year")
+	@Column(name = "year")
 	private Integer lauchYear;
 	
 	@Column(name = "img_url")

@@ -41,9 +41,9 @@ public class User implements Serializable, UserDetails {
 	private List<Review> reviews = new ArrayList<>();
 	
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "role_user",
-			joinColumns = @JoinColumn(name = "id_user"),
-			inverseJoinColumns = @JoinColumn(name = "id_role"))
+	@JoinTable(name = "tb_user_role",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 
 	public Long getId() {

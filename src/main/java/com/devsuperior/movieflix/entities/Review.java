@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "review")
+@Table(name = "tb_review")
 public class Review {
 
 	@Id
@@ -23,11 +23,11 @@ public class Review {
 	private String text;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_movie")
+	@JoinColumn(name = "movie_id")
 	private Movie movie;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_user")
+	@JoinColumn(name = "user_id")
 	private User user;
 
 	public Long getId() {
