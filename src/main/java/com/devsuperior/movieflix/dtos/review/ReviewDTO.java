@@ -1,11 +1,14 @@
-package com.devsuperior.movieflix.dtos.genre;
+package com.devsuperior.movieflix.dtos.review;
 
 import java.io.Serializable;
+
+import javax.validation.constraints.NotBlank;
 
 public class ReviewDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	@NotBlank(message = "Movie's review cannot be empty")
 	private String text;
 	private Long movieId;
 	
