@@ -23,6 +23,6 @@ public class GenreService {
 	@Transactional(readOnly = true)
 	public List<GenreOutputAllDTO> findAll() {
 		List<Genre> list = repository.findAll();
-		return mapper.convertEntityListToGenreOutputDTOList(list);
+		return mapper.convertGenreEntityListToGenreOutputDTOList(list);
 	}
 }

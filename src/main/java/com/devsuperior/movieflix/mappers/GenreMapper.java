@@ -11,9 +11,13 @@ import com.devsuperior.movieflix.entities.Genre;
 @Service
 public class GenreMapper {
 
-	public List<GenreOutputAllDTO> convertEntityListToGenreOutputDTOList(List<Genre> list) {
+	public List<GenreOutputAllDTO> convertGenreEntityListToGenreOutputDTOList(List<Genre> list) {
 		return list.stream()
-				.map(entity -> new GenreOutputAllDTO(entity))
+				.map(entity -> convertGenreEntityToGenreOutputAllDTO(entity))
 				.collect(Collectors.toList());
+	}
+	
+	public GenreOutputAllDTO convertGenreEntityToGenreOutputAllDTO(Genre entity) {
+		return new GenreOutputAllDTO(entity);
 	}
 }
