@@ -1,10 +1,13 @@
 package com.devsuperior.movieflix.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.devsuperior.movieflix.dtos.review.ReviewDTO;
+import com.devsuperior.movieflix.dtos.review.ReviewOutputAllDTO;
 import com.devsuperior.movieflix.dtos.review.ReviewOutputDTO;
 import com.devsuperior.movieflix.entities.Review;
 import com.devsuperior.movieflix.mappers.ReviewMapper;
@@ -40,4 +43,8 @@ public class ReviewService {
 		entity.setUser(authService.authenticated());
 	}
 	 
+	@Transactional(readOnly = true)
+	public List<ReviewOutputAllDTO> findByMovie(Long idMovie) {
+		return repository.findByMovie(idMovie);
+	}
 }
